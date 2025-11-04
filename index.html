@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva: Funciones en Python</title>
+    <style>
+        /* === ESTILOS GLOBALES Y DE ESCRITORIO === */
+        body {
+            font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0;
+            padding: 40px; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; box-sizing: border-box; transition: padding 0.3s ease;
+        }
+
+        .slideshow-container { position: relative; width: 90%; max-width: 960px; }
+        
+        .slide {
+            display: none; background-color: #fff; border: 1px solid #ccc;
+            height: 540px; padding: 40px 60px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-direction: column; justify-content: center; position: relative;
+            box-sizing: border-box;
+        }
+
+        .fade { animation-name: fade; animation-duration: 0.5s; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background-color: #cccccc; color: #333;
+            border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 24px; transition: all 0.3s ease;
+            user-select: none; z-index: 10;
+        }
+
+        .prev { left: -70px; }
+        .next { right: -70px; }
+        .prev:hover, .next:hover { background-color: #aaaaaa; }
+
+        .slide h1 { font-size: 3.5em; text-align: center; border-bottom: 4px solid #11a800; padding-bottom: 20px; color: #005A9C; }
+        .slide h2 { font-size: 2.8em; margin-top: 0; margin-bottom: 30px; text-align: center; color: #005A9C; }
+        .single-content { text-align: center; }
+        .single-content p { font-size: 1.5em; color: #444; }
+        .single-content pre { font-size: 1.4em; display: inline-block; text-align: left; max-width: 100%; }
+        pre { background-color: #2d3436; color: #fff; padding: 15px; border-radius: 5px; font-size: 1.1em; white-space: pre-wrap; }
+        .footer { position: absolute; bottom: 20px; right: 40px; font-size: 1em; color: #888; }
+
+        /* === MEDIA QUERIES === */
+        @media screen and (max-width: 768px) {
+            body { padding: 15px; }
+            .slideshow-container { width: 100%; padding-bottom: 75px; }
+            .slide { height: auto; min-height: 75vh; padding: 20px 25px; }
+            .prev, .next { top: auto; bottom: 15px; width: 45px; height: 45px; }
+            .prev { left: 50%; transform: translateX(-110%); }
+            .next { left: 50%; transform: translateX(10%); right: auto; }
+            .slide h1 { font-size: 2.2em; }
+            .slide h2 { font-size: 1.8em; }
+            .single-content p { font-size: 1.1em; }
+            .single-content pre { font-size: 1em; }
+            .footer { font-size: 0.8em; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        
+        <div class="slide fade">
+            <h1>Cheat Sheet de Python</h1>
+            <h2 style="color:#333; border:none;">Funciones</h2>
+            <div class="footer">1 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>¿Qué es una Función?</h2>
+            <div class="single-content"><p>Un bloque de código reutilizable que realiza una tarea específica. Como una mini-receta.</p></div>
+            <div class="footer">2 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Definir una Función: <code>def</code></h2>
+            <div class="single-content"><p>Se usa la palabra clave `def`, un nombre, paréntesis y dos puntos.</p><pre><code>def saludar():
+    print("¡Hola, mundo!")</code></pre></div>
+            <div class="footer">3 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Llamar a una Función</h2>
+            <div class="single-content"><p>Para ejecutar la función, simplemente escribe su nombre seguido de paréntesis.</p><pre><code># Primero se define
+def saludar():
+    print("¡Hola, mundo!")
+
+# Luego se llama
+saludar()</code></pre></div>
+            <div class="footer">4 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Parámetros</h2>
+            <div class="single-content"><p>Son variables que reciben valores cuando se llama a la función.</p><pre><code>def saludar_a(nombre):
+    print(f"¡Hola, {nombre}!")
+
+saludar_a("Ana")</code></pre></div>
+            <div class="footer">5 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Argumentos</h2>
+            <div class="single-content"><p>Son los valores que se envían a la función al llamarla (ej. "Ana").</p><pre><code># 'nombre' es el parámetro
+def saludar_a(nombre):
+    print(f"¡Hola, {nombre}!")
+
+# "Ana" es el argumento
+saludar_a("Ana")</code></pre></div>
+            <div class="footer">6 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Retornar un Valor: <code>return</code></h2>
+            <div class="single-content"><p>Una función puede devolver un resultado para ser usado en otra parte.</p><pre><code>def sumar(a, b):
+    return a + b
+
+resultado = sumar(5, 3)
+print(resultado) # 8</code></pre></div>
+            <div class="footer">7 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Argumentos por Defecto</h2>
+            <div class="single-content"><p>Se puede asignar un valor por defecto a un parámetro.</p><pre><code>def saludar(nombre="Mundo"):
+    print(f"¡Hola, {nombre}!")
+
+saludar() # Imprime "¡Hola, Mundo!"
+saludar("Python") # Imprime "¡Hola, Python!"</code></pre></div>
+            <div class="footer">8 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Funciones Integradas (Built-in)</h2>
+            <div class="single-content"><p>Funciones que Python ya trae listas para usar, sin necesidad de definirlas.</p></div>
+            <div class="footer">9 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Built-in: <code>print()</code></h2>
+            <div class="single-content"><p>Muestra un mensaje en la consola.</p><pre><code>print("Esto es una función built-in.")</code></pre></div>
+            <div class="footer">10 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Built-in: <code>len()</code></h2>
+            <div class="single-content"><p>Devuelve la longitud (número de elementos) de un objeto.</p><pre><code>print(len("hola")) # 4
+print(len([1, 2, 3])) # 3</code></pre></div>
+            <div class="footer">11 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Built-in: <code>input()</code></h2>
+            <div class="single-content"><p>Permite obtener datos introducidos por el usuario (siempre como string).</p><pre><code>nombre = input("Escribe tu nombre: ")</code></pre></div>
+            <div class="footer">12 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Built-in: <code>type()</code></h2>
+            <div class="single-content"><p>Devuelve el tipo de un objeto.</p><pre><code>print(type(10))     # <class 'int'>
+print(type("hola")) # <class 'str'></code></pre></div>
+            <div class="footer">13 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Built-in: Conversión de Tipos</h2>
+            <div class="single-content"><p>Funciones para convertir entre tipos de datos.</p><pre><code>numero = int("100")
+texto = str(55)
+flotante = float("9.99")</code></pre></div>
+            <div class="footer">14 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Built-in: <code>max()</code>, <code>min()</code>, <code>sum()</code></h2>
+            <div class="single-content"><p>Operaciones matemáticas comunes sobre secuencias de números.</p><pre><code>numeros = [1, 5, 2, 8]
+print(max(numeros)) # 8
+print(min(numeros)) # 1
+print(sum(numeros)) # 16</code></pre></div>
+            <div class="footer">15 / 15</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 1; showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function showSlides(n) {
+            let i, slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 } 
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slides[slideIndex - 1].style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
